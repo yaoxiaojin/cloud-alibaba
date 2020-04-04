@@ -18,7 +18,6 @@ spring:
 
 # ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
 # cloud-provider-payment-dev.yaml
-
 management:
   endpoints:
     web:

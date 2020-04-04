@@ -1,6 +1,8 @@
 package com.yaoxiaojin.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.yaoxiaojin.config.NacosConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yaoxiaojin
  */
 @RestController
+@RefreshScope
 public class NacosController {
 
-    @Value("${name}")
-    private String name;
+    @Autowired
+    private NacosConfig nacosConfigProperties;
 
-    @GetMapping(value = "/nacos/config")
+    @GetMapping("/nacos/config")
     public String getPayment() {
-        return name;
+        return nacosConfigProperties.getName();
     }
+
 }
