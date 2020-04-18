@@ -1,5 +1,6 @@
 package com.yaoxiaojin.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.yaoxiaojin.entities.CommonResult;
 import com.yaoxiaojin.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentController {
 
     @GetMapping(value = "/payment/{id}")
+    @SentinelResource(value = "testHotKey")
     public CommonResult<Payment> getPayment(@PathVariable("id") Long id) {
         log.info("payment method is running");
         CommonResult<Payment> result = new CommonResult(200, "success");
